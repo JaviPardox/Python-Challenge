@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[31]:
+# In[32]:
 
 
 
@@ -23,6 +23,7 @@ def computeParam(balanceChange):
     diffList = []
     avrgDiff = 0
     
+    #find maximum increase and decrease
     for i in range(len(balanceChange)):
         
         if(i+1 < len(balanceChange)):
@@ -53,11 +54,13 @@ with open(csvpath) as csvfile:
     
     csvreader = csv.reader(csvfile, delimiter=',')
     
+    #store each columns in a list for later work
     parameters = []
     dates = []
     balanceChanges = []
     
-    next(csvreader) #skip first line
+    #skip first line
+    next(csvreader) 
     
     for row in csvreader:
             
@@ -70,17 +73,18 @@ parameters = computeParam(balanceChanges)
 #declaring path for output file 
 output_path = os.path.join('.', 'Analysis', 'analysis.csv')
 
+#write to file
 with open(output_path, 'w', newline='') as csvfile:
     
     csvwriter = csv.writer(csvfile, delimiter=',')
     
     csvwriter.writerow(['Financial Analysis'])
     csvwriter.writerow(['------------------'])
-    csvwriter.writerow(['Total months: ', len(dates)])
-    csvwriter.writerow(['Total: $', parameters[4]])
-    csvwriter.writerow(['Average Change: $', parameters[5]])
-    csvwriter.writerow(['Greatest increase in Profits:', dates[parameters[2]], parameters[0]])
-    csvwriter.writerow(['Greatest decrease in Profits: ', dates[parameters[3]], parameters[1]])
+    csvwriter.writerow(['Total months', len(dates)])
+    csvwriter.writerow(['Total', parameters[4]])
+    csvwriter.writerow(['Average Change', parameters[5]])
+    csvwriter.writerow(['Greatest increase in Profits', dates[parameters[2]], parameters[0]])
+    csvwriter.writerow(['Greatest decrease in Profits', dates[parameters[3]], parameters[1]])
             
      
 print("Financial Analysis")

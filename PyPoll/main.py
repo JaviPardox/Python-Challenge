@@ -14,20 +14,23 @@ import csv
 #concatenates file path
 csvpath = os.path.join('.', 'Resources', 'election_data.csv')
 
-#open csv file
+#open csv file from csvpath
 with open(csvpath) as csvfile:
     
     csvreader = csv.reader(csvfile, delimiter=',')
     
-    next(csvreader) #skip first line
+    #skip first line
+    next(csvreader) 
     
-    totalVotes = 0
+    #variables to keep track of total votes and candidate's votes
+    totalVotes = 0         
     votesKhan = 0
     votesCorrey = 0
     votesLi = 0
     votesOtooley = 0
-    winnerCount = 0
     
+    #winnerCount keeps track of who's winning up to that row
+    winnerCount = 0        
     
     for row in csvreader:
             
@@ -61,6 +64,7 @@ with open(csvpath) as csvfile:
 #declaring path for output file 
 output_path = os.path.join('.', 'Analysis', 'pollAnalysis.csv')
 
+#write to file 
 with open(output_path, 'w', newline='') as csvfile:
     
     csvwriter = csv.writer(csvfile, delimiter=',')
