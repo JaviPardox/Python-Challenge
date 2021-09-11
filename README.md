@@ -1,4 +1,4 @@
-# Python-Challenge
+# Python Initiation
 
 This code consists of two sripts, one that processes the financial records from a company and another one that processes poll data. 
 
